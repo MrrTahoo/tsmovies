@@ -1,6 +1,7 @@
 import './App.css';
 import Row from './Row'
 import requests from './requests'
+import Nav from './Nav';
 import Banner from './Banner'
 
 
@@ -9,8 +10,9 @@ function App() {
 
 
     <div className="App">
+      <Nav />
       <Banner />
-      <Row title="Netflix Originals" fetchUrl={requests.fetchNetflixOriginals}
+      <Row title="NETFLIX ORIGINALS" fetchUrl={requests.fetchNetflixOriginals}
         islargeRow />
       <Row title="Trending Now Movies" fetchUrl={requests.fetchTrending} />
       <Row title="Top Rated Movies" fetchUrl={requests.fetchTopRated} />

@@ -33,9 +33,6 @@ function Row({ title, fetchUrl, islargeRow }) {
                         src={`${base_url}${islargeRow ? movie.poster_path : movie.backdrop_path}`} alt={movie.name} />
                 ))}
             </div>
-
-
-
         </div>
     )
 }

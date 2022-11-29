@@ -1,31 +1,55 @@
 import React, { useEffect, useState } from 'react'
+import axios from './axios';
+import requests from './requests';
+import './Banner.css';
+
 
 function Banner() {
     const [movie, setMovie] = useState([]);
 
     useEffect(() => {
         async function fetchData() {
-            const request = await fetch("https://api.themoviedb.org/3/discover/tv?api_key=<<api_key>>&with_networks=213");
-            const response = await request.json();
+            const request = await axios.get(requests.fetchNetflixOriginals);
             setMovie(
-                response.results[
-                Math.floor(Math.random() * response.results.length - 1)
+                request.data.results[
+                Math.floor(Math.random() * request.data.results.length - 1)
                 ]
             );
             return request;
         }
         fetchData();
     }, []);
+    console.log(movie);
 
+    function truncate(str, n) {
+        return str?.length > n ? str.substr(0, n - 1) + "..." : str;
+    }
 
     return (
-        <div>{/*background image*/}
+        <header className="banner"
+            style={{
+                backgroundSize: "cover",
+                backgroundImage: `url(
+                    "https://image.tmdb.org/t/p/original/${movie?.backdrop_path}"
+                )`,
+                backgroundPosition: "center center",
+            }}
+        >
 
-            {/*title*/}
-            {/*div -> buttons*/}
-            {/*description*/}
-        </div>
+            <div className='banner__contents'>{/*background image*/}
+                <h1 className='banner__title'>{movie?.name || movie?.title || movie?.original_name}</h1>
+
+                <div className="banner__buttons">
+                    <button className="banner__button">Play</button>
+                    <button className="banner__button">My List</button>
+                </div>
+
+                <h1 className="banner__description">{truncate(movie?.overview, 150)}</h1>
+
+                <div className="banner--fadeBottom"></div>
+            </div>
+        </header>
     )
 }
 
-export default Banner
+export default Banner;
