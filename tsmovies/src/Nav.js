@@ -12,10 +12,10 @@ function Nav() {
             } else handleShow(false);
         });
         return () => {
-            window.removeEventListener("scroll");
+            window.removeEventListener("scroll", () => {
+                console.log("remove");
+            });
         };
-
-
     }, []);
 
 
@@ -31,7 +31,7 @@ function Nav() {
                 src='https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png'
                 alt='Netflix Avatar'
             />
-        </div>
+        </div >
     )
 }
 

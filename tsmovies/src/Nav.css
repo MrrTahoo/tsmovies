@@ -8,7 +8,8 @@
     
     padding: 20px;
     justify-content: space-between;
-    background-color: black;
+    transition-timing-function: ease-in;
+    transition: 0.5s;
 }
 
 .nav__logo{
@@ -23,4 +24,9 @@
     object-fit: contain;
     right: 20px;
     position: fixed;
+}
+
+.nav__black{
+     background-color: black;
+    
 }
